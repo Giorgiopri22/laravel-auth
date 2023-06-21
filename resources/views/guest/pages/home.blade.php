@@ -2,7 +2,6 @@
 
 @section('content')
 <div class='container'>
-<h1 class="text-white">CULO</h1>
     @foreach ($projects as $el)
         <div class="card" style="width: 18rem;">
             <div class="card-body">

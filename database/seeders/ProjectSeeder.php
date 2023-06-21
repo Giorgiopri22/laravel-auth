@@ -22,7 +22,6 @@ class ProjectSeeder extends Seeder
         $newProject->project_date = '2023-06-20';
         $newProject->programming_languages = 'Vue Js/Laravel';
         $newProject->link = 'https://github.com/Giorgiopri22/vite-boolflix';
-
         $newProject->save();
     }
 }
