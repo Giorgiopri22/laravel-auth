@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Guest\GuestController;
 
+use App\Http\Controllers\ProjectController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,15 +18,26 @@ use App\Http\Controllers\Admin\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('guest.welcome');
+    return view('welcome');
 });
 
+//guest
+Route::get('/portfolio', [GuestController::class, 'index'])->name('portfolio');
 
-Route::middleware('auth', 'verified')->prefix('admin')->name('admin.')->group(function () {
+
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    //tutte le localhost:8000/admin/....
+    
+    
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/', [DashboardController::class , 'index'])->name('dashboard');
+
+    //rotte admin
+    Route::resource('/project', ProjectController::class);
 });
 
 require __DIR__.'/auth.php';

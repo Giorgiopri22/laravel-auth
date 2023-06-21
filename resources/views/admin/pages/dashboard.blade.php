@@ -22,5 +22,9 @@
             </div>
         </div>
     </div>
+
+     <a href="{{route('admin.project.index')}}" class="btn btn-outline-light mt-3">Go to Projects</a>
+
+     <a href="{{route('admin.project.create')}}" class="btn btn-outline-light mt-3">Create New Project</a>
 </div>
 @endsection
